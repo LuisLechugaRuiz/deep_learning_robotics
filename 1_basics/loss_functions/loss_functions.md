@@ -42,5 +42,20 @@ Where \( C \) is the number of classes, \( y \) is a binary indicator (0 or 1) i
 - A special case of cross-entropy loss for binary classification tasks.
 
 ### 7. Kullback-Leibler Divergence (KL Divergence)
-- Measures how one probability distribution differs from a second, reference probability distribution.
-- Often used in Variational Autoencoders (VAEs).
+
+The KL Divergence quantifies how much one probability distribution diverges from another. Formally, for two discrete probability distributions \(P\) and \(Q\), the KL Divergence \(D_{KL}(P \parallel Q)\) is defined as:
+
+\[ D_{KL}(P \parallel Q) = \sum_i P(i) \log \frac{P(i)}{Q(i)} \]
+
+The formula essentially computes the expected logarithmic difference between the probabilities \(P\) and \(Q\). 
+
+## Properties of KL Divergence
+
+1. **Non-symmetric**: KL Divergence is not symmetric. That means \(D_{KL}(P \parallel Q)\) is not necessarily equal to \(D_{KL}(Q \parallel P)\).
+2. **Non-negative**: The divergence is always non-negative, and it is 0 only when \(P\) and \(Q\) are the same distribution.
+
+## Use-cases:
+
+- **Variational Autoencoders (VAEs)**: In VAEs, KL Divergence measures how close the learned latent variable distribution is to a prior distribution, usually a standard normal distribution.
+- **Reinforcement Learning**: In policy optimization methods, KL Divergence can be used to measure how much the policy has changed after an update. It helps in maintaining stability during training by ensuring the updated policy doesn't deviate too much from the old policy.
+- **Model Distillation**: When transferring knowledge from a larger model (teacher) to a smaller model (student), KL Divergence can measure the difference between their output distributions.

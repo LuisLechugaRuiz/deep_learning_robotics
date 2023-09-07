@@ -36,3 +36,18 @@ def huber_loss(y, y_pred, delta):
 def categorical_cross_entropy(y, p):
     # nn.CrossEntropyLoss() in PyTorch - Combines softmax operation and the categorical cross-entropy
     return -np.sum(y * np.log(p))
+
+
+def kl_divergence(P, Q):
+    # nn.KLDivLoss() in PyTorch.
+
+    # Make sure the distributions are numpy arrays
+    P = np.asarray(P, dtype=np.float)
+    Q = np.asarray(Q, dtype=np.float)
+
+    # Avoid division by zero
+    mask = P != 0
+
+    # Calculate KL Divergence only for non-zero elements
+    return np.sum(P[mask] * np.log(P[mask] / Q[mask]))
+    # [mask] is used for indexing by boolean values (filtering arrays based on conditions).
