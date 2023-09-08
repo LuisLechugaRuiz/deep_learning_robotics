@@ -1,8 +1,10 @@
 import torch.nn as nn
 import torch
 
+from simple_neural_network import SimpleNeuralNetwork
+
 # Initialize model
-model = SimpleNNPyTorch(input_size=3, hidden_size=5, output_size=1)
+model = SimpleNeuralNetwork(input_size=3, hidden_size=5, output_size=1)
 # Initialize loss function
 criterion = nn.MSELoss()
 # Initialize optimizer
